@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sahayog - A Blood Donation Portal</title>
+	<link rel="stylesheet" href="../static/proxima-nova.css">
+	<link rel="stylesheet" href="../static/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+</head>
+<body>
+	<header class="header ">
+		<div class="top-bar text-center">
+			<div class="l-1">
+				<div class="row">
+					<div class="column large-4 logo">
+						<span class="white semibold">Sahayog</span>
+						<img src="../static/img/sahayog_logo.png">
+					</div>
+					<div class="column large-8 text-right">
+					<!-- <div class="social">
+						<img src="img/twitter-logo.png" alt="">
+						<img src="img/facebook-logo.png" alt="">
+						<img src="img/instagram-logo.png" alt="">
+					</div> -->
+					<div class="menu-wrapper">
+						<ul class="menu">
+							<li><a href="{{ url_for('index') }}">Home</a></li>
+							<li><a href="">About Us</a></li>
+							<li><a href="{{ url_for('user') }}"><button class="hollow">Log In</button></a></li>
+							<li><a href="{{ url_for('sign') }}"><button>Sign Up</button></a></li>
+							<li>
+			          {% with messages = get_flashed_messages() %}
+			           {% if messages %}
+
+			            {% for message in messages %}
+			            <div class="alert alert-info">
+			                   <strong>Welcome</strong> {{ message }}
+			           </div>
+			                    {% endfor %}
+
+			              {% endif %}
+			           {% endwith %}
+			        </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+	<!-- <div class="hero">
+		<div class="hero-line white text-center">YOU ARE NOT JUST GIVING BLOOD.<br> YOU ARE GIVING LIFE.</div>
+		<button class="cta">I want to Help</button>
+	</div> -->
+
+	<!-- People Section -->
+	<section>
+		<div class="row list-people">
+			<div class="column large-6">
+				<div class="title">Recipient History</div>
+				<div class="list">
+
+					{% for h in r_history %}
+						<div class="list__person">
+							<div class="blood-group">
+								{{h[6]}}
+							</div>
+							<div class="contact-detail">
+								<span class="name">{{h[2]}}</span>
+								<span class="phone">{{h[4]}}</span>
+								<span class="address">{{h[5]}}</span>
+
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<!-- <div class="column large-6">
+				<div class="title">Recent Donors</div>
+			{% for n in newresult %}
+				<div class="list">
+					<div class="list__person">
+						<div class="blood-group">
+							{{n[2]}}
+						</div>
+						<div class="contact-detail">
+							<span class="name">{{n[1]}}</span>
+							<span class="phone">{{n[3]}}</span>
+							<span class="address">{{n[5]}}</span>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			</div> -->
+		</div>
+	</section>
+	<!-- End People Section -->
+
+	<!-- Top Donors -->
+	<section class="td">
+		<div class="row text-center">
+			<h4>Top Donors</h4>
+		</div>
+		<div class="row small-up-3 medium-up-4 large-up-5 top__donors">
+			<div class="column text-center">
+				<img src="../static/img/team1.jpg">
+				<div class="name">James Morgan</div>
+				<div class="expertise">Athelete</div>
+				<div class="email">james@morgam.com</div>
+			</div>
+			<div class="column text-center">
+				<img src="../static/img/team2.jpg">
+				<div class="name">Alex Yu</div>
+				<div class="expertise">Computer Engineer</div>
+				<div class="email">alex@yu.com</div>
+			</div>
+			<div class="column text-center">
+				<img src="../static/img/team3.jpg">
+				<div class="name">Ross Gelen</div>
+				<div class="expertise">Bank Manager</div>
+				<div class="email">ross@galen.com</div>
+			</div>
+			<div class="column text-center">
+				<img src="../static/img/team4.jpg">
+				<div class="name">Sarah Page</div>
+				<div class="expertise">Traveler</div>
+				<div class="email">sarah@page.com</div>
+			</div>
+			<div class="column text-center">
+				<img src="../static/img/team5.jpg">
+				<div class="name">Clark Kenny</div>
+				<div class="expertise">Singer</div>
+				<div class="email">clark@kenny.com</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Top Donors -->
+
+	<section>
+		<div class="row collapse" data-equalizer>
+			<div class="column large-6">
+				<div data-equalizer-watch><img src="../static/img/client-1.png" alt=""></div>
+			</div>
+			<div class="column large-6">
+				<div class="testimony red" data-equalizer-watch>
+					<div class="word text-center white">They were recommended to me by a friend. They are the best in business . I still thank my friend for suggesting them to me.</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Another 2 testimonials -->
+		<div class="row collapse" data-equalizer>
+			<div class="column large-3">
+				<div data-equalizer-watch><img src="../static/img/client-2.png" alt=""></div>
+			</div>
+			<div class="column large-3">
+				<div class="testimony" data-equalizer-watch>
+					<div class="word text-center blue">They were recommended to me by a friend. They are the best in business . I still thank my friend for suggesting them to me.</div>
+				</div>
+			</div>
+
+			<div class="column large-3">
+				<div data-equalizer-watch><img src="../static/img/client-3.png" alt=""></div>
+			</div>
+			<div class="column large-3">
+				<div class="testimony" data-equalizer-watch>
+					<div class="word text-center blue">They were recommended to me by a friend. They are the best in business . I still thank my friend for suggesting them to me.</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row collapse" data-equalizer>
+			<div class="column large-6">
+				<div class="testimony red" data-equalizer-watch>
+					<div class="word text-center white">They were recommended to me by a friend. They are the best in business . I still thank my friend for suggesting them to me.</div>
+				</div>
+			</div>
+			<div class="column large-6">
+				<div data-equalizer-watch><img src="../static/img/client-4.png" alt=""></div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="contact">
+		<div class="row text-center">
+			<h4 class="bitter white">Sahayog</h4>
+		</div>
+		<div class="column medium-4 text-center">
+			<img src="../static/img/mail-us-icon.png" alt="">
+			<span class="bitter">Mail Us </br>
+				info@sahayog.com</span>
+			</div>
+			<div class="column medium-4 text-center">
+				<img src="../static/img/phone-us-icon.png" alt="">
+				<span class="bitter">Phone Us</br>
+					+977 9841343434</span>
+				</div>
+				<div class="column medium-4 text-center">
+					<img src="../static/img/find-us-icon.png" alt="">
+					<span class="bitter">Find Us</br>
+						Kathmandu, Nepal</span>
+					</div>
+					<div class="clearfix"></div>
+				</section>
+				<div class="copyright">
+					<div class="row text-center">
+						<span class="bitter">© 2017 All rights reserved to "Sahayog - A Blood Donation Portal"</h4>
+						</div>
+					</div>
+					<script>
+						$(document).foundation();
+
+						$('.trigger').click(function(e) {
+							e.preventDefault();
+
+							var $this = $(this);
+							if ($this.next().hasClass('show')) {
+								$this.next().removeClass('show');
+								$this.removeClass('active');
+								$this.next().slideUp(350);
+							} else {
+								$this.parent().parent().find('.expanded-info').removeClass('show');
+								$this.parent().parent().find('.expanded-info').slideUp(350);
+								$this.next().toggleClass('show');
+								$this.addClass('active');
+								$this.next().slideToggle(350);
+							}
+						});
+
+						$('.day-detail').click(function(e) {
+							e.preventDefault();
+
+							var $this = $(this);
+
+							if ($this.next().hasClass('show')) {
+								$this.next().removeClass('show');
+								$this.removeClass('active');
+								$this.next().slideUp(350);
+							} else {
+								$this.parent().parent().find('li .day-content').removeClass('show');
+								$this.parent().parent().find('li .day-content').slideUp(350);
+								$this.next().toggleClass('show');
+								$this.addClass('active');
+								$this.next().slideToggle(350);
+							}
+						});
+					</script>
+				</body>
+				</html>

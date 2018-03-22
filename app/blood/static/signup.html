@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sahayog</title>
+	<link rel="stylesheet" href="./proxima-nova.css">
+	<link rel="stylesheet" href="./style.css">
+	<link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+</head>
+<body>
+	<header class="header ">
+		<div class="top-bar text-center">
+			<div class="l-1">
+				<div class="row">
+					<div class="column large-4 logo">
+						<span class="white semibold">Sahayog</span>
+						<img src="img/sahayog_logo.png">
+					</div>
+					<div class="column large-8 text-right">
+					<!-- <div class="social">
+						<img src="img/twitter-logo.png" alt="">
+						<img src="img/facebook-logo.png" alt="">
+						<img src="img/instagram-logo.png" alt="">
+					</div> -->
+					<div class="menu-wrapper">
+						<ul class="menu">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="">About Us</a></li>
+							<li><a href="login.html"><button class="hollow">Log In</button></a></li>
+							<li><a href="signup.html"><button>Sign Up</button></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="hero">
+		<div class="hero-line white text-center">YOU ARE NOT JUST GIVING BLOOD.<br> YOU ARE GIVING LIFE.</div>
+	</div>
+
+	<!-- Trip Description -->
+	<section>
+		<div class="row">
+			<div class="column medium-6">
+				<h4>Want to receive or donate blood?. Sign In here.</h4>
+				<div class="contact-form">
+					<form action="#">
+						Full Name <input type="text" name="">
+						Email Address <input type="text" name="">
+						Password <input type="password" name="">
+						Phone Number <input type="text" name="">
+						Address <input type="text" name="">
+						<button class="primary">Submit</button>
+					</form>
+				</div>
+			</div>
+			<div class="column medium-5 medium-offset-1">
+				<img src="img/arm.jpg">
+			</div>
+		</section>
+
+		<section class="contact">
+			<div class="row text-center">
+				<h4 class="bitter white">Sahayog</h4>
+			</div>
+			<div class="column medium-4 text-center">
+				<img src="img/mail-us-icon.png" alt="">
+				<span class="bitter">Mail Us </br>
+					info@sahayog.com</span>
+				</div>
+				<div class="column medium-4 text-center">
+					<img src="img/phone-us-icon.png" alt="">
+					<span class="bitter">Phone Us</br>
+						+977 9841343434</span>
+					</div>
+					<div class="column medium-4 text-center">
+						<img src="img/find-us-icon.png" alt="">
+						<span class="bitter">Find Us</br>
+							Kathmandu, Nepal</span>
+						</div>
+						<div class="clearfix"></div>
+					</section>
+					<div class="copyright">
+						<div class="row text-center">
+							<span class="bitter">© 2017 All rights reserved to Sahayog -  A Blood Donation Portal</h4>
+							</div>
+						</div>
+						<script>
+							$(document).foundation();
+
+							$('.trigger').click(function(e) {
+								e.preventDefault();
+
+								var $this = $(this);
+								if ($this.next().hasClass('show')) {
+									$this.next().removeClass('show');
+									$this.removeClass('active');
+									$this.next().slideUp(350);
+								} else {
+									$this.parent().parent().find('.expanded-info').removeClass('show');
+									$this.parent().parent().find('.expanded-info').slideUp(350);
+									$this.next().toggleClass('show');
+									$this.addClass('active');
+									$this.next().slideToggle(350);
+								}
+							});
+
+							$('.day-detail').click(function(e) {
+								e.preventDefault();
+
+								var $this = $(this);
+
+								if ($this.next().hasClass('show')) {
+									$this.next().removeClass('show');
+									$this.removeClass('active');
+									$this.next().slideUp(350);
+								} else {
+									$this.parent().parent().find('li .day-content').removeClass('show');
+									$this.parent().parent().find('li .day-content').slideUp(350);
+									$this.next().toggleClass('show');
+									$this.addClass('active');
+									$this.next().slideToggle(350);
+								}
+							});
+						</script>
+					</body>
+					</html>

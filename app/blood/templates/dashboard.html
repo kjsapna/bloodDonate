@@ -1,0 +1,105 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+ <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Contact Blood</span>
+              <div class="count">{{total}}</div>
+             <!--  <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
+            </div>
+
+             {% for list in totalB %}
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Total {{list[1]}}</span>
+              <div class="count">{{list[0]}}</div>
+            <!--   <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span> -->
+            </div>
+            {% endfor %}
+          </div>
+          <!-- /top tiles -->
+
+
+
+                <div class="row list-people">
+                  <div class="column large-6">
+                    <div class="title"><h2>Recipient</h2></div>
+                    <div class="list">
+<table class="table table-responsive">
+  <tr>
+    <th>
+      Blood Group
+    </th>
+    <th>
+      Name
+    </th>
+
+    <th>
+      Posted Date
+    </th>
+    <th>
+      Status
+    </th>
+    <th>
+      Received
+    </th>
+  </tr>
+  </tr>
+                      {% for r in ar_history %}
+                        <tr class="list__person">
+                          <td class="blood-group">
+                            {{r[6]}}
+                          </td>
+                          <td class="contact-detail">
+                            <span class="name">{{r[2]}}</span>,
+                            <span class="phone">{{r[4]}}</span>,
+                            <span class="address">{{r[5]}}</span>
+
+                          </td>
+                          <td>
+{{r[9]}}
+                          </td>
+                          <td>
+{% if r[7]==1 %}
+<a href="{{ url_for('recipient_status_update', recipient_id = r[0],status=0) }}">Active</a>
+	{% else %}
+<a href="{{ url_for('recipient_status_update', recipient_id = r[0],status=1) }}">Inactive</a>
+	{% endif %}
+                          </td>
+<td>
+  {% if r[8]==1 %}
+  <a href="{{ url_for('recipient_received_update', recipient_id = r[0],received=0) }}">Yes</a>
+  	{% else %}
+  <a href="{{ url_for('recipient_received_update', recipient_id = r[0],received=1) }}">No</a>
+  	{% endif %}
+</td>
+                        </tr>
+                      {% endfor %}
+
+                    </table>
+                    </div>
+                  </div>
+                  <div class="column large-6">
+            				<div class="title">History</div>
+            			{% for d in d_history %}
+            				<div class="list">
+            					<div class="list__person">
+            						<div class="blood-group">
+            							{{d[2]}}
+            						</div>
+            						<div class="contact-detail">
+            							<span class="name">{{d[1]}}</span>
+            							<span class="phone">{{d[3]}}</span>
+            							<span class="address">{{d[5]}}</span>
+            						</div>
+            					</div>
+            				{% endfor %}
+            				</div>
+            			</div>
+                </div>
+            </div>
+
+
+{% endblock %}

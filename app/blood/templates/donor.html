@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sahayog</title>
+	<link rel="stylesheet" href="../static/proxima-nova.css">
+	<link rel="stylesheet" href="../static/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+</head>
+<body>
+	<header class="header ">
+		<div class="top-bar text-center">
+			<div class="l-1">
+				<div class="row">
+					<div class="column large-4 logo">
+						<span class="white semibold">Sahayog</span>
+						<img src="../static/img/sahayog_logo.png">
+					</div>
+					<div class="column large-8 text-right">
+					<!-- <div class="social">
+						<img src="img/twitter-logo.png" alt="">
+						<img src="img/facebook-logo.png" alt="">
+						<img src="img/instagram-logo.png" alt="">
+					</div> -->
+					<div class="menu-wrapper">
+						<ul class="menu">
+              <li><a href="">Home</a></li>
+							<li><a href="">About Us</a></li>
+							{% if session['email'] %}
+									<li><a href="{{url_for('recipient')}}">Receive</a></li>
+		              <li><a href="{{url_for('donor')}}">Donate</a></li>
+									<li>
+											<strong>Welcome,</strong>
+											<a href="{{url_for('reset', email = email)}}">{{session['name']}}</a>
+									</li>
+									<li><a href="{{ url_for('index') }}"><button class="hollow">Log Out</button></a></li>
+								{% else %}
+									<li><a href="{{ url_for('user') }}"><button class="hollow">Log In</button></a></li>
+							 		<li><a href="{{ url_for('sign') }}"><button>Sign Up</button></a></li>
+								{% endif %}
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- <div class="hero">
+		<div class="hero-line white text-center">YOU ARE NOT JUST GIVING BLOOD.<br> YOU ARE GIVING LIFE.</div>
+	</div> -->
+
+	<!-- Trip Description -->
+	<section>
+		<div class="row">
+			<div class="column medium-6">
+        <div>
+          {% with messages = get_flashed_messages() %}
+           {% if messages %}
+
+            {% for message in messages %}
+            <div class="alert alert-info">
+                   <strong>Info!</strong> {{ message }}
+           </div>
+                    {% endfor %}
+
+              {% endif %}
+           {% endwith %}
+        </div>
+				<h4>Want to Donate?. Fill up the form.</h4>
+				<div class="contact-form">
+					<form action="{{ url_for('donor') }}" method="post">
+						Donor Name <input type="text" name="donor_name" placeholder="Donor Name" required="" value = "{{ session['name']}}">
+						Blood Group <select class="form-control" name="bloodCategoryId">
+									<option value="0">Select </option>
+								{% for list in bloodCategoryList %}
+									<option value={{list.id}}>{{list.blood_type}}</option>
+							 	{% endfor %}
+							</select>
+            Phone Number <input type="text" name="donor_phone" placeholder="phone" required="" value = "{{ session['phone']}}">
+            Email <input type="text" name="donor_email" placeholder="Email" required="" value = "{{ session['email']}}">
+            Address <input type="text" name="donor_address" placeholder="Address" required="" value = "{{ session['address']}}">
+            Age <input type="text" name="donor_age" placeholder="Age" required="">
+            Gender <input type="text" name="donor_gender" placeholder="Gender" required="">
+						<button class="primary" type="submit">Submit</button>
+						<a href = "{{ url_for('donor_history')}}" class="primary">History</a>
+					</form>
+				</div>
+			</div>
+			<div class="column medium-5 medium-offset-1">
+				<img src="../static/../static/img/arm.jpg">
+			</div>
+		</section>
+
+		<section class="contact">
+			<div class="row text-center">
+				<h4 class="bitter white">Sahayog</h4>
+			</div>
+			<div class="column medium-4 text-center">
+				<img src="../static/img/mail-us-icon.png" alt="">
+				<span class="bitter">Mail Us </br>
+					info@sahayog.com</span>
+				</div>
+				<div class="column medium-4 text-center">
+					<img src="../static/img/phone-us-icon.png" alt="">
+					<span class="bitter">Phone Us</br>
+						+977 9841343434</span>
+					</div>
+					<div class="column medium-4 text-center">
+						<img src="../static/img/find-us-icon.png" alt="">
+						<span class="bitter">Find Us</br>
+							Kathmandu, Nepal</span>
+						</div>
+						<div class="clearfix"></div>
+					</section>
+					<div class="copyright">
+						<div class="row text-center">
+							<span class="bitter">© 2017 All rights reserved to Sahayog -  A Blood Donation Portal</h4>
+							</div>
+						</div>
+
+					</body>
+					</html>
